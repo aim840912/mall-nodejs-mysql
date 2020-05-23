@@ -1,0 +1,36 @@
+<%- include('../includes/header.ejs')%>
+
+<h1>購物車</h1>
+<% if(cartProducts.length >0){ %>
+<ul class="list-unstyled">
+    <% cartProducts.forEach(function(item){ %>
+    <li class="media border-bottom p-2">
+        <img src="<%= item.imageUrl %>" class="mr-3" style="width:100px" alt="<%= item.title %>">
+        <div class="media-body">
+            <h5 class="mt-0 mb-1"><%= item.title %></h5>
+            <small>价格：￥<%= item.price %></small>
+            <p><%= item.description %></p>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="badge badge-primary badge-pill mr-3 mt-2"><%= item.qty %></span>
+
+            <form action="/cart-delete-product" method="post">
+                <input type="hidden" name="productId" value="<%= item.id %>" />
+                <button type="submit" class="btn btn-danger">刪除產品</button>
+            </form>
+
+        </div>
+    </li>
+    <% }) %>
+</ul>
+
+
+<div>总计：￥<%= totalPrice %></div>
+
+<% } else {%>
+<h5>暂无購物車产品</h5>
+<%}%>
+
+
+<%- include('../includes/footer.ejs')%>
