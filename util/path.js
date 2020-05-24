@@ -1,5 +1,5 @@
-const path = require('path');
+const path = require('path')
 
-console.log(path.dirname(process.mainModule.filename));
+console.log(path.dirname(process.mainModule.filename))
 
-module.exports = path.dirname(process.mainModule.filename);
+module.exports = path.dirname(process.mainModule.filename)
