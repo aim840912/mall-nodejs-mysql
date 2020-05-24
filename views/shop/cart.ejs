@@ -13,7 +13,7 @@
         </div>
 
         <div class="d-flex justify-content-between align-items-center">
-            <span class="badge badge-primary badge-pill mr-3 mt-2"><%= item.qty %></span>
+            <span class="badge badge-primary badge-pill mr-3 mt-2"><%= item.cartItem.quantity %></span>
 
             <form action="/cart-delete-product" method="post">
                 <input type="hidden" name="productId" value="<%= item.id %>" />
@@ -23,11 +23,12 @@
         </div>
     </li>
     <% }) %>
+    <center>
+        <form action="/create-order" method="post">
+            <button type="submit" class="btn btn-primary">生成訂單</button>
+        </form>
+    </center>
 </ul>
-
-
-<div>总计：￥<%= totalPrice %></div>
-
 <% } else {%>
 <h5>暂无購物車产品</h5>
 <%}%>
